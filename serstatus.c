@@ -28,21 +28,22 @@ int main(int argc,char *argv[])
         exit(1);
     }
     r = ioctl(fd, TIOCMGET, &c);
-    if (!r) {
+    if (r == -1) {
         perror("ioctl");
         exit(1);
     }
 
-    printf("Current state:%d\n",c);
+    printf("0x%X: ",c);
 
-    if (c&TIOCM_RTS) printf("RTS\n");
-    if (c&TIOCM_LE) printf("Line Enable\n");
-    if (c&TIOCM_DTR) printf("DTR\n");
-    if (c&TIOCM_CAR) printf("CARRIER DETECT\n");
-    if (c&TIOCM_DSR) printf("DSR\n");
-    if (c&TIOCM_CTS) printf("CTS\n");
-    if (c&TIOCM_RNG) printf("RING!\n");
-    if (c&TIOCM_CD) printf("CD\n");
+    if (c&TIOCM_RTS) printf("RTS ") ; else printf("    ");
+    if (c&TIOCM_LE)  printf("LE  ") ; else printf("    ");
+    if (c&TIOCM_DTR) printf("DTR ") ; else printf("    ");
+    if (c&TIOCM_CAR) printf("CAR ") ; else printf("    ");
+    if (c&TIOCM_DSR) printf("DSR ") ; else printf("    ");
+    if (c&TIOCM_CTS) printf("CTS ") ; else printf("    ");
+    if (c&TIOCM_RNG) printf("RING "); else printf("     ");
+    if (c&TIOCM_CD)  printf("CD  ") ; else printf("    ");
+    printf("\n");
 
     close(fd);
 }
