@@ -1,4 +1,4 @@
-Show serial port (tty) signals. There is a s/w called statserial.
+Show serial port (tty) pin states. There is also a newer s/w called statserial.
 
 This is old code, circa 1997, still works.
 
