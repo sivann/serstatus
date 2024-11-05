@@ -1,6 +1,5 @@
 TARGET  = serstatus
 CCOPTS =  -O2 -g -Wall
-LIBS =  -lcurses
 CC = gcc
 
 $(TARGET): *.c
